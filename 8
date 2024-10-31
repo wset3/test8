@@ -1,6 +1,13 @@
--- Define the global variables
+-- Set the global variables
 getgenv().AutoMenu = true  -- Set this to false if you want to disable AutoMenu
 getgenv().SolaraMode = false -- Set this to true if you want to enable SolaraMode
+
+-- Load the appropriate script based on SolaraMode
+if getgenv().SolaraMode then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/hen56s2/Holder/refs/heads/main/Pop"))()
+else
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/wset3/test8/refs/heads/main/8"))()
+end
 
 -- Function for AutoMenu
 if getgenv().AutoMenu then
@@ -52,11 +59,4 @@ if getgenv().AutoMenu then
     }
     
     game:GetService("ReplicatedStorage").dataRemoteEvent:FireServer(unpack(args))
-end
-
--- Function for SolaraMode
-if getgenv().SolaraMode then
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/hen56s2/Holder/refs/heads/main/Pop"))()
-else
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/wset3/test5/refs/heads/main/5"))()
 end
